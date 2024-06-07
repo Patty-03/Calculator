@@ -4,10 +4,12 @@ import javax.swing.JTextField;
 
 public class Logica {
 	
+	//Limpiar el input
 	public void clean(JTextField input){
 		input.setText("0");
 	}
 	
+	//Poner los numeros correspondientes en el input
 	public void setNumber(JTextField input, String number){
 		if(input.getText().equals("0") || input.getText().equals("Error") || input.getText().equals("Cannot divide by Zero")){
 			input.setText("");
@@ -19,38 +21,46 @@ public class Logica {
 		}
 	}
 	
-	public int saveNumber(JTextField input){
+	//Poner un punto
+	public void setDot(JTextField input){
+			String currentText = input.getText();
+			input.setText(currentText + ".");
+	}
+	
+	//Guardar un numero para hacer la operacion despues
+	public float saveNumber(JTextField input){
 		String number = input.getText();
-		int num = Integer.parseInt(number);
+		float num = Float.parseFloat(number);
 		input.setText("");
 		return num;
 	}
 
-	public void operation(JTextField input, int a, int b, char operation){
-		int result;
+	//Realizar la operacion
+	public void operation(JTextField input, float a, float b, char operation){
+		float result;
 		String r;
 		if(operation == '+'){
 			result = a+b;
-			r = Integer.toString(result);
+			r = Float.toString(result);
 			input.setText("");
 			input.setText(r);
 		}
 		else if(operation == '-'){
 			result = a-b;
-			r = Integer.toString(result);
+			r = Float.toString(result);
 			input.setText("");
 			input.setText(r);
 		}
 		else if(operation == '*'){
 			result = a*b;
-			r = Integer.toString(result);
+			r = Float.toString(result);
 			input.setText("");
 			input.setText(r);
 		}
 		else if(operation == '/'){
 			if(b!=0){
 			result = a/b;
-			r = Integer.toString(result);
+			r = Float.toString(result);
 			input.setText("");
 			input.setText(r);
 			}

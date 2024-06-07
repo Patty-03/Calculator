@@ -21,7 +21,7 @@ public class Calculator extends JFrame {
 	private JTextField input;
 	Logica l1 = new Logica();
 	char operation;
-	int n1, n2;
+	float n1, n2;
 
 	/**
 	 * Launch the application.
@@ -156,7 +156,7 @@ public class Calculator extends JFrame {
 		number0Btn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		number0Btn.setBorder(null);
 		number0Btn.setBackground(new Color(153, 153, 204));
-		number0Btn.setBounds(12, 403, 232, 84);
+		number0Btn.setBounds(12, 403, 206, 84);
 		contentPane.add(number0Btn);
 		
 		JButton number2Btn = new JButton("2");
@@ -263,7 +263,7 @@ public class Calculator extends JFrame {
 				l1.operation(input, n1, n2, operation);
 			}
 		});
-		equalsBtn.setBounds(256, 403, 206, 84);
+		equalsBtn.setBounds(339, 403, 123, 84);
 		contentPane.add(equalsBtn);
 		
 		
@@ -271,5 +271,18 @@ public class Calculator extends JFrame {
 		lblCalculator.setFont(new Font("Segoe UI Historic", Font.BOLD, 20));
 		lblCalculator.setBounds(188, 13, 103, 27);
 		contentPane.add(lblCalculator);
+		
+		JButton dotBtn = new JButton(".");
+		dotBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				l1.setDot(input);
+			}
+		});
+		dotBtn.setForeground(Color.WHITE);
+		dotBtn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+		dotBtn.setBorder(null);
+		dotBtn.setBackground(new Color(153, 153, 204));
+		dotBtn.setBounds(230, 403, 97, 84);
+		contentPane.add(dotBtn);
 	}
 }
