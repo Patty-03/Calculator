@@ -20,6 +20,8 @@ public class Calculator extends JFrame {
 	private JPanel contentPane;
 	private JTextField input;
 	Logica l1 = new Logica();
+	char operation;
+	int n1, n2;
 
 	/**
 	 * Launch the application.
@@ -41,6 +43,7 @@ public class Calculator extends JFrame {
 		contentPane.setLayout(null);
 		
 		input = new JTextField();
+		input.setText("0");
 		input.setEditable(false);
 		input.setForeground(UIManager.getColor("text"));
 		input.setFont(new Font("Segoe UI Black", Font.PLAIN, 20));
@@ -69,15 +72,18 @@ public class Calculator extends JFrame {
 		divideBtn.setBackground(new Color(255, 0, 153));
 		divideBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				n1 = l1.saveNumber(input);
+				operation = '/';
 			}
 		});
 		divideBtn.setBounds(121, 145, 97, 50);
 		contentPane.add(divideBtn);
 		
-		JButton multiplyBtn = new JButton("*");
+		JButton multiplyBtn = new JButton("X");
 		multiplyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				n1 = l1.saveNumber(input);
+				operation = '*';}
 		});
 		multiplyBtn.setForeground(UIManager.getColor("text"));
 		multiplyBtn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
@@ -87,6 +93,12 @@ public class Calculator extends JFrame {
 		contentPane.add(multiplyBtn);
 		
 		JButton minusBtn = new JButton("-");
+		minusBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				n1 = l1.saveNumber(input);
+				operation = '-';
+			}
+		});
 		minusBtn.setForeground(UIManager.getColor("text"));
 		minusBtn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		minusBtn.setBorder(null);
@@ -228,6 +240,9 @@ public class Calculator extends JFrame {
 		JButton plusBtn = new JButton("+");
 		plusBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				n1 = l1.saveNumber(input);
+				operation = '+';
+				System.out.println(n1);
 			}
 		});
 		plusBtn.setForeground(UIManager.getColor("text"));
@@ -244,6 +259,8 @@ public class Calculator extends JFrame {
 		equalsBtn.setBackground(new Color(51, 204, 255));
 		equalsBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				n2 = l1.saveNumber(input);
+				l1.operation(input, n1, n2, operation);
 			}
 		});
 		equalsBtn.setBounds(256, 403, 206, 84);
