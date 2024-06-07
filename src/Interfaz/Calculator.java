@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import Interfaz.Logica;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Cursor;
 
 
 public class Calculator extends JFrame {
@@ -21,7 +24,24 @@ public class Calculator extends JFrame {
 	private JTextField input;
 	Logica l1 = new Logica();
 	char operation;
-	float n1, n2;
+	float n1 = 0, n2 =0 ;
+	private JButton multiplyBtn;
+	private JButton divideBtn;
+	private JButton minusBtn;
+	private JButton plusBtn;
+	private JButton equalsBtn;
+	private JButton cleanBtn;
+	private JButton number1Btn;
+	private JButton number2Btn;
+	private JButton number3Btn;
+	private JButton number4Btn;
+	private JButton number5Btn;
+	private JButton number6Btn;
+	private JButton number7Btn;
+	private JButton number8Btn;
+	private JButton number9Btn;
+	private JButton number0Btn;
+	private JButton dotBtn;
 
 	/**
 	 * Launch the application.
@@ -52,7 +72,18 @@ public class Calculator extends JFrame {
 		contentPane.add(input);
 		input.setColumns(10);
 		
-		JButton cleanBtn = new JButton("C");
+		cleanBtn = new JButton("C");
+		cleanBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				cleanBtn.setBackground(new Color(100, 210, 255));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				cleanBtn.setBackground(new Color(51, 204, 255));
+			}
+		});
+		cleanBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cleanBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.clean(input);
@@ -65,7 +96,18 @@ public class Calculator extends JFrame {
 		cleanBtn.setBounds(12, 145, 97, 50);
 		contentPane.add(cleanBtn);
 		
-		JButton divideBtn = new JButton("/");
+		divideBtn = new JButton("/");
+		divideBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		divideBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				divideBtn.setBackground(new Color(255, 0, 90));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				divideBtn.setBackground(new Color(255, 0, 153));
+			}
+		});
 		divideBtn.setForeground(UIManager.getColor("text"));
 		divideBtn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		divideBtn.setBorder(null);
@@ -79,7 +121,18 @@ public class Calculator extends JFrame {
 		divideBtn.setBounds(121, 145, 97, 50);
 		contentPane.add(divideBtn);
 		
-		JButton multiplyBtn = new JButton("X");
+		multiplyBtn = new JButton("X");
+		multiplyBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		multiplyBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				multiplyBtn.setBackground(new Color(255, 0, 90));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				multiplyBtn.setBackground(new Color(255, 0, 153));
+			}
+		});
 		multiplyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				n1 = l1.saveNumber(input);
@@ -92,7 +145,18 @@ public class Calculator extends JFrame {
 		multiplyBtn.setBounds(230, 145, 97, 50);
 		contentPane.add(multiplyBtn);
 		
-		JButton minusBtn = new JButton("-");
+		minusBtn = new JButton("-");
+		minusBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		minusBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				minusBtn.setBackground(new Color(255, 0, 90));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				minusBtn.setBackground(new Color(255, 0, 153));
+			}
+		});
 		minusBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				n1 = l1.saveNumber(input);
@@ -106,7 +170,18 @@ public class Calculator extends JFrame {
 		minusBtn.setBounds(339, 145, 123, 115);
 		contentPane.add(minusBtn);
 		
-		JButton number1Btn = new JButton("1");
+		number1Btn = new JButton("1");
+		number1Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number1Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number1Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number1Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number1Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "1");
@@ -120,7 +195,18 @@ public class Calculator extends JFrame {
 		number1Btn.setBounds(12, 208, 97, 52);
 		contentPane.add(number1Btn);
 		
-		JButton number4Btn = new JButton("4");
+		number4Btn = new JButton("4");
+		number4Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number4Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number4Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number4Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number4Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "4");
@@ -133,7 +219,18 @@ public class Calculator extends JFrame {
 		number4Btn.setBounds(12, 273, 97, 52);
 		contentPane.add(number4Btn);
 		
-		JButton number7Btn = new JButton("7");
+		number7Btn = new JButton("7");
+		number7Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number7Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number7Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number7Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number7Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "7");
@@ -146,7 +243,18 @@ public class Calculator extends JFrame {
 		number7Btn.setBounds(12, 338, 97, 52);
 		contentPane.add(number7Btn);
 		
-		JButton number0Btn = new JButton("0");
+		number0Btn = new JButton("0");
+		number0Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number0Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number0Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number0Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number0Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "0");
@@ -159,7 +267,18 @@ public class Calculator extends JFrame {
 		number0Btn.setBounds(12, 403, 206, 84);
 		contentPane.add(number0Btn);
 		
-		JButton number2Btn = new JButton("2");
+		number2Btn = new JButton("2");
+		number2Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number2Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number2Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number2Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number2Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "2");
@@ -172,7 +291,18 @@ public class Calculator extends JFrame {
 		number2Btn.setBounds(121, 208, 97, 52);
 		contentPane.add(number2Btn);
 		
-		JButton number5Btn = new JButton("5");
+		number5Btn = new JButton("5");
+		number5Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number5Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number5Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number5Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number5Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "5");
@@ -185,7 +315,18 @@ public class Calculator extends JFrame {
 		number5Btn.setBounds(121, 273, 97, 52);
 		contentPane.add(number5Btn);
 		
-		JButton number3Btn = new JButton("3");
+		number3Btn = new JButton("3");
+		number3Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number3Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number3Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number3Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number3Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "3");
@@ -198,7 +339,18 @@ public class Calculator extends JFrame {
 		number3Btn.setBounds(230, 208, 97, 52);
 		contentPane.add(number3Btn);
 		
-		JButton number6Btn = new JButton("6");
+		number6Btn = new JButton("6");
+		number6Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number6Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number6Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number6Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number6Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "6");
@@ -211,7 +363,18 @@ public class Calculator extends JFrame {
 		number6Btn.setBounds(230, 273, 97, 52);
 		contentPane.add(number6Btn);
 		
-		JButton number8Btn = new JButton("8");
+		number8Btn = new JButton("8");
+		number8Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number8Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number8Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number8Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number8Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "8");
@@ -224,7 +387,18 @@ public class Calculator extends JFrame {
 		number8Btn.setBounds(121, 338, 97, 52);
 		contentPane.add(number8Btn);
 		
-		JButton number9Btn = new JButton("9");
+		number9Btn = new JButton("9");
+		number9Btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				number9Btn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				number9Btn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		number9Btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		number9Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setNumber(input, "9");
@@ -237,7 +411,18 @@ public class Calculator extends JFrame {
 		number9Btn.setBounds(230, 338, 97, 52);
 		contentPane.add(number9Btn);
 		
-		JButton plusBtn = new JButton("+");
+		plusBtn = new JButton("+");
+		plusBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		plusBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				plusBtn.setBackground(new Color(255, 0, 90));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				plusBtn.setBackground(new Color(255, 0, 153));
+			}
+		});
 		plusBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				n1 = l1.saveNumber(input);
@@ -251,7 +436,18 @@ public class Calculator extends JFrame {
 		plusBtn.setBounds(339, 275, 123, 115);
 		contentPane.add(plusBtn);
 		
-		JButton equalsBtn = new JButton("=");
+		equalsBtn = new JButton("=");
+		equalsBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				equalsBtn.setBackground(new Color(100, 210, 255));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				equalsBtn.setBackground(new Color(51, 204, 255));
+			}
+		});
+		equalsBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		equalsBtn.setForeground(UIManager.getColor("text"));
 		equalsBtn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		equalsBtn.setBorder(null);
@@ -271,7 +467,18 @@ public class Calculator extends JFrame {
 		lblCalculator.setBounds(188, 13, 103, 27);
 		contentPane.add(lblCalculator);
 		
-		JButton dotBtn = new JButton(".");
+		dotBtn = new JButton(".");
+		dotBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				dotBtn.setBackground(new Color(200, 153, 204));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				dotBtn.setBackground(new Color(153, 153, 204));
+			}
+		});
+		dotBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dotBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setDot(input);

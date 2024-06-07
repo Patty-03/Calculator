@@ -27,7 +27,7 @@ public class Logica {
 			input.setText(currentText + ".");
 	}
 	
-	//Guardar un numero para hacer la operacion despues
+	//Guardar un numero para hacer la operacion despues (Validacion para que no ponga mas de un punto)
 	public float saveNumber(JTextField input){
 		String number = input.getText();
 		float num = 0; 
