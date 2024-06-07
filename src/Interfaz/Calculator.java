@@ -1,25 +1,25 @@
 package Interfaz;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
 import java.awt.Color;
-import javax.swing.UIManager;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import Interfaz.Logica;
+
 
 public class Calculator extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField input;
+	Logica l1 = new Logica();
 
 	/**
 	 * Launch the application.
@@ -40,10 +40,19 @@ public class Calculator extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		input = new JTextField();
+		input.setEditable(false);
+		input.setForeground(UIManager.getColor("text"));
+		input.setFont(new Font("Segoe UI Black", Font.PLAIN, 20));
+		input.setBackground(new Color(153, 153, 204));
+		input.setBounds(12, 44, 450, 84);
+		contentPane.add(input);
+		input.setColumns(10);
+		
 		JButton cleanBtn = new JButton("C");
 		cleanBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				input.setText("");
+				l1.clean(input);
 			}
 		});
 		cleanBtn.setForeground(UIManager.getColor("text"));
@@ -86,6 +95,11 @@ public class Calculator extends JFrame {
 		contentPane.add(minusBtn);
 		
 		JButton number1Btn = new JButton("1");
+		number1Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "1");
+			}
+		});
 		number1Btn.setForeground(UIManager.getColor("text"));
 		number1Btn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		number1Btn.setBorderPainted(false);
@@ -97,6 +111,7 @@ public class Calculator extends JFrame {
 		JButton number4Btn = new JButton("4");
 		number4Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "4");
 			}
 		});
 		number4Btn.setForeground(UIManager.getColor("text"));
@@ -107,6 +122,11 @@ public class Calculator extends JFrame {
 		contentPane.add(number4Btn);
 		
 		JButton number7Btn = new JButton("7");
+		number7Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "7");
+			}
+		});
 		number7Btn.setForeground(UIManager.getColor("text"));
 		number7Btn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		number7Btn.setBorder(null);
@@ -115,6 +135,11 @@ public class Calculator extends JFrame {
 		contentPane.add(number7Btn);
 		
 		JButton number0Btn = new JButton("0");
+		number0Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "0");
+			}
+		});
 		number0Btn.setForeground(UIManager.getColor("text"));
 		number0Btn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		number0Btn.setBorder(null);
@@ -123,6 +148,11 @@ public class Calculator extends JFrame {
 		contentPane.add(number0Btn);
 		
 		JButton number2Btn = new JButton("2");
+		number2Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "2");
+			}
+		});
 		number2Btn.setForeground(UIManager.getColor("text"));
 		number2Btn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		number2Btn.setBorder(null);
@@ -131,6 +161,11 @@ public class Calculator extends JFrame {
 		contentPane.add(number2Btn);
 		
 		JButton number5Btn = new JButton("5");
+		number5Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "5");
+			}
+		});
 		number5Btn.setForeground(UIManager.getColor("text"));
 		number5Btn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		number5Btn.setBorder(null);
@@ -141,6 +176,7 @@ public class Calculator extends JFrame {
 		JButton number3Btn = new JButton("3");
 		number3Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "3");
 			}
 		});
 		number3Btn.setForeground(UIManager.getColor("text"));
@@ -151,6 +187,11 @@ public class Calculator extends JFrame {
 		contentPane.add(number3Btn);
 		
 		JButton number6Btn = new JButton("6");
+		number6Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "6");
+			}
+		});
 		number6Btn.setForeground(UIManager.getColor("text"));
 		number6Btn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		number6Btn.setBorder(null);
@@ -161,6 +202,7 @@ public class Calculator extends JFrame {
 		JButton number8Btn = new JButton("8");
 		number8Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "8");
 			}
 		});
 		number8Btn.setForeground(UIManager.getColor("text"));
@@ -171,6 +213,11 @@ public class Calculator extends JFrame {
 		contentPane.add(number8Btn);
 		
 		JButton number9Btn = new JButton("9");
+		number9Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				l1.setNumber(input, "9");
+			}
+		});
 		number9Btn.setForeground(UIManager.getColor("text"));
 		number9Btn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		number9Btn.setBorder(null);
@@ -202,13 +249,6 @@ public class Calculator extends JFrame {
 		equalsBtn.setBounds(256, 403, 206, 84);
 		contentPane.add(equalsBtn);
 		
-		input = new JTextField();
-		input.setForeground(UIManager.getColor("text"));
-		input.setFont(new Font("Segoe UI Black", Font.PLAIN, 20));
-		input.setBackground(new Color(153, 153, 204));
-		input.setBounds(12, 44, 450, 84);
-		contentPane.add(input);
-		input.setColumns(10);
 		
 		JLabel lblCalculator = new JLabel("Calculator");
 		lblCalculator.setFont(new Font("Segoe UI Historic", Font.BOLD, 20));
