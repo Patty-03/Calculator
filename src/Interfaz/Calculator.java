@@ -102,7 +102,7 @@ public class Calculator extends JFrame {
 		minusBtn.setForeground(UIManager.getColor("text"));
 		minusBtn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		minusBtn.setBorder(null);
-		minusBtn.setBackground(new Color(51, 204, 255));
+		minusBtn.setBackground(new Color(255, 0, 153));
 		minusBtn.setBounds(339, 145, 123, 115);
 		contentPane.add(minusBtn);
 		
@@ -242,7 +242,6 @@ public class Calculator extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				n1 = l1.saveNumber(input);
 				operation = '+';
-				System.out.println(n1);
 			}
 		});
 		plusBtn.setForeground(UIManager.getColor("text"));
@@ -279,7 +278,7 @@ public class Calculator extends JFrame {
 			}
 		});
 		dotBtn.setForeground(Color.WHITE);
-		dotBtn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+		dotBtn.setFont(new Font("Segoe UI Semibold", Font.BOLD, 40));
 		dotBtn.setBorder(null);
 		dotBtn.setBackground(new Color(153, 153, 204));
 		dotBtn.setBounds(230, 403, 97, 84);

@@ -30,8 +30,15 @@ public class Logica {
 	//Guardar un numero para hacer la operacion despues
 	public float saveNumber(JTextField input){
 		String number = input.getText();
-		float num = Float.parseFloat(number);
-		input.setText("");
+		float num = 0; 
+
+		try{
+			num = Float.parseFloat(number);
+			input.setText("");
+		}
+		catch(NumberFormatException e){
+			input.setText("Error");
+		}
 		return num;
 	}
 
