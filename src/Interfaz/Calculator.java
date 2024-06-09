@@ -1,6 +1,7 @@
 package Interfaz;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,16 +13,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import Interfaz.Logica;
+import Logica.Logica;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
+import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 
 public class Calculator extends JFrame {
-
+	private static final long serialVersionUID = 1L; //puse esto para quitar una warning que me aparecia
 	private JPanel contentPane;
 	private JTextField input;
 	Logica l1 = new Logica();
@@ -65,14 +67,16 @@ public class Calculator extends JFrame {
 		contentPane.setLayout(null);
 		
 		input = new JTextField();
+		input.setHorizontalAlignment(SwingConstants.RIGHT);
 		input.setText("0");
-		input.setEditable(false);
+		//input.setEditable(false);
 		input.setForeground(UIManager.getColor("text"));
 		input.setFont(new Font("Segoe UI Black", Font.PLAIN, 20));
 		input.setBackground(new Color(153, 153, 204));
-		input.setBounds(12, 44, 450, 84);
+		input.setBounds(12, 45, 450, 84);
 		contentPane.add(input);
 		input.setColumns(10);
+		
 		
 		cleanBtn = new JButton("C");
 		cleanBtn.addMouseListener(new MouseAdapter() {
@@ -464,9 +468,9 @@ public class Calculator extends JFrame {
 		contentPane.add(equalsBtn);
 		
 		
-		JLabel lblCalculator = new JLabel("Calculator");
+		JLabel lblCalculator = new JLabel("CALCULATOR");
 		lblCalculator.setFont(new Font("Segoe UI Historic", Font.BOLD, 20));
-		lblCalculator.setBounds(188, 13, 103, 27);
+		lblCalculator.setBounds(167, 6, 149, 27);
 		contentPane.add(lblCalculator);
 		
 		dotBtn = new JButton(".");
@@ -492,5 +496,44 @@ public class Calculator extends JFrame {
 		dotBtn.setBackground(new Color(153, 153, 204));
 		dotBtn.setBounds(230, 403, 97, 84);
 		contentPane.add(dotBtn);
+	;
+
+	input.addKeyListener(new KeyAdapter() {
+	    @Override
+	    public void keyTyped(KeyEvent e) {
+	        char c = e.getKeyChar();
+	        String currentText = input.getText();
+	        
+	        if (Character.isDigit(c) || c == '.') {
+	            input.setText(currentText + c);
+	        } else if (c == '+' || c == '-' || c == '*' || c == '/') {
+	            if (!currentText.isEmpty() && !containsOperation(currentText)) {
+	                input.setText(currentText + " " + c + " ");
+	            }
+	        } else if (c == KeyEvent.VK_ENTER) {
+	            String[] parts = currentText.split(" ");
+	            if (parts.length == 3) {
+	                try {
+	                    float a = Float.parseFloat(parts[0]);
+	                    float b = Float.parseFloat(parts[2]);
+	                    char operation = parts[1].charAt(0);
+	                    l1.operation(input, a, b, operation);
+	                } catch (NumberFormatException ex) {
+	                    input.setText("Invalid number format");
+	                }
+	            } else {
+	                input.setText("Invalid expression");
+	            }
+	        }
+	        e.consume();
+	    }
+
+	    private boolean containsOperation(String text) {
+	        return text.contains("+") || text.contains("-") || text.contains("*") || text.contains("/");
+	    }
+	});
+
 	}
 }
+
+
